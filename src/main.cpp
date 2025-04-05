@@ -1,12 +1,4 @@
 
-/*
- * ESP32 Basic Sketch for automatic update of firmware at start
- *
- * Renzo Mischianti <www.mischianti.org>
- *
- * https://mischianti.org
- */
-
 #include <Arduino.h>
 
 #include <WiFi.h>
@@ -16,8 +8,6 @@
 #include <HTTPUpdate.h>
 
 #ifndef APSSID
-// #define APSSID "ESP32_OTA_Host"
-// #define APPSK "12345678"
 
 #define APSSID "ESP32_OTA_Host"
 #define APPSK "12345678"
@@ -56,15 +46,6 @@ void loop() {
   if ((WiFiMulti.run() == WL_CONNECTED)) {
 
     WiFiClient client;
-
-    // The line below is optional. It can be used to blink the LED on the board
-    // during flashing The LED will be on during download of one buffer of data
-    // from the network. The LED will be off during writing that buffer to flash
-    // On a good connection the LED should flash regularly. On a bad connection
-    // the LED will be on much longer than it will be off. Other pins than
-    // LED_BUILTIN may be used. The second value is used to put the LED on. If
-    // the LED is on with HIGH, that value should be passed
-    // httpUpdate.setLedPin(LED_BUILTIN, LOW);
 
     httpUpdate.rebootOnUpdate(false); // remove automatic update
 
